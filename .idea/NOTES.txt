@@ -1,0 +1,2 @@
+*Used "set FLASK_APP=<filename>" to setup env variable
+*Used "set FLASK_DEBUG=1" to setup real time updating
