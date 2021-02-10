@@ -1,12 +1,9 @@
-# WT Forms is the most popular extension to work with forms
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, \
-    TextAreaField  # This enables us to put strings in the field
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from flask_login import current_user
 from flaskblog.models import User
-
 
 # Create Registration Form
 # When creating a form, you have to create a class for it first
@@ -54,13 +51,6 @@ class UpdateAccountForm(FlaskForm):
             if user:
                 raise ValidationError('Email has already been taken')
 
-
-class PostForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
-    content = TextAreaField('Content', validators=[DataRequired()])
-    submit = SubmitField('Post')
-
-
 class RequestResetForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Request Password Reset')
@@ -70,9 +60,10 @@ class RequestResetForm(FlaskForm):
         if user is None:
             raise ValidationError('There is no account with that email. You must register first')
 
-
 class ResetPasswordForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
 
     submit = SubmitField('Reset Password')
+
+

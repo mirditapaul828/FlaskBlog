@@ -1,4 +1,6 @@
-from flaskblog import app
+from flaskblog import create_app
+
+app = create_app()
 
 #Use this in order to run the app through python
 #Using this avoids the hassle in creating and
